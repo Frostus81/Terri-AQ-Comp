@@ -2,73 +2,67 @@
 #define Buttons_h
 
 #include "Arduino.h"
-int saufg = 0, suntg = 0, mond = 0, tagl = 0, over = 0;
-float counter1, counter2, counter3 = 255, counter4 = 80;
+
+//saufg: Trigger Sonnenaufgang, suntg: Trigger Sonnenuntergang, mond: Trigger Mondlicht, tagl: Trigger Tageslicht, over: Trigger Übersteurt durch manuel.
+int saufg, suntg, mond, tagl, aus, over;
+float counter1, counter2, counter3 = 200, counter4 = 80;
 
 /*
  * Button für manuellen Sonnenaufgang
  */
-void aufgang() 
-{
+void aufgang(){
   saufg = 1;
   suntg = 0; 
   mond = 0;
-  over = 1;
   tagl = 0;
+  aus = 0;
 }
 
 /*
  * Button für manuellen Sonnenuntergang
  */
-void untergang() 
-{
+void untergang(){
   saufg = 0;
   suntg = 1; 
   mond = 0;
-  over = 1;
   tagl = 0;
+  aus = 0;
 }
 
 /*
  * Button für manuellen Mondschein
  */
-void mondl() 
-{
+void mondl(){
   saufg = 0;
   suntg = 0;
   mond = 1;
-  over = 1;
   tagl = 0;
-
+  aus = 0;
 }
 
 /*
  * Button für manuell Licht aus
  */
-void lichtaus() 
-{
+void lichtaus(){
   saufg = 0;
   suntg = 0; 
   mond = 0;
   tagl = 0;
-  over = 1;
-
+  aus = 1;
 }
 
 /*
- * Button für Ende manuellen Sonnenuntergang
+ * Button für Ende manuelle Steuerung und zurück zu Tageslicht
  */
-void resetten() 
-{
-
+void resetten(){
   saufg = 0;
   suntg = 0; 
   mond = 0;
-  over = 0;
   tagl = 1;
+  aus = 0;
   counter1 = 0;
   counter2 = 0;
-  counter3 = 255;
+  counter3 = 200;
   counter4 = 80;
 }
 
